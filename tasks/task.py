@@ -1,13 +1,24 @@
 from typing import Dict
+import time
+from time import sleep
 
 execution_time: Dict[str, float] = {}
 
-
 def time_decorator(fn):
-    """
-    Create a decorator function `time_decorator`
-    which has to calculate decorated function execution time
-    and put this time value to `execution_time` dictionary where `key` is
-    decorated function name and `value` is this function execution time.
-    """
+    def wrapper(a,b):
+        start = time.time()
+        fn(a,b)
+        end = time.time()
+        c = end-start
+        execution_time[str(fn.__name__)] = c
+    return wrapper
     pass
+# @time_decorator
+# def func_add(a: int, b: int):
+#     sleep(0.2)
+#     return a + b
+#
+# func_add(10, 20)
+# print(execution_time)
+# execution_time['func_add']
+# 0.212341254
