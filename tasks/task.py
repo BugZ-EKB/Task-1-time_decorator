@@ -5,11 +5,11 @@ from time import sleep
 execution_time: Dict[str, float] = {}
 
 def time_decorator(fn):
-    def wrapper(a,b):
+    def wrapper(a,b,d):
         start = time.time()
         fn(a,b)
         end = time.time()
-        c = end-start
+        c = end-start + d
         execution_time[str(fn.__name__)] = c
     return wrapper
     pass
@@ -20,5 +20,5 @@ def time_decorator(fn):
 #
 # func_add(10, 20)
 # print(execution_time)
-# execution_time['func_add']
+# print(execution_time['func_add'])
 # 0.212341254
