@@ -5,9 +5,9 @@ from time import sleep
 execution_time: Dict[str, float] = {}
 
 def time_decorator(fn):
-    def wrapper(a,b,d):
+    def wrapper(a, b, d):
         start = time.time()
-        fn(a,b)
+        fn(a,b,d)
         end = time.time()
         c = end-start + d
         execution_time[str(fn.__name__)] = c
