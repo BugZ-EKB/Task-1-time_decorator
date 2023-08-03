@@ -11,6 +11,7 @@ def time_decorator(fn):
         end = time.time()
         c = end-start
         execution_time[str(fn.__name__)] = c
+        return fn(*args, **kwargs)
     return wrapper
     pass
 # @time_decorator
@@ -18,7 +19,7 @@ def time_decorator(fn):
 #     sleep(sleep_time)
 #     return a + b
 #
-# func_add(10, 20, 0.1)
+# print(func_add(10, 20, 0.1))
 # print(execution_time)
 # print(execution_time['func_add'])
 # 0.212341254
